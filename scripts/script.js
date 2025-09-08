@@ -1,9 +1,21 @@
 let totalPrice = 0;
 
-loadCategories = () => {};
-fetch("https://openapi.programming-hero.com/api/categories")
-  .then((res) => res.json())
-  .then((json) => displayCategory(json.categories));
+//Soinner
+const manageSpinner = (status) => {
+  if (status === true) {
+    document.getElementById("spinner").classList.remove("hidden");
+    document.getElementById("card-section").classList.add("hidden");
+  } else {
+    document.getElementById("card-section").classList.remove("hidden");
+    document.getElementById("spinner").classList.add("hidden");
+  }
+};
+
+loadCategories = () => {
+  fetch("https://openapi.programming-hero.com/api/categories")
+    .then((res) => res.json())
+    .then((json) => displayCategory(json.categories));
+};
 
 const loadFrontCards = () => {
   const url = `https://openapi.programming-hero.com/api/plants`;
@@ -72,6 +84,7 @@ displayToCarts = (cart) => {
   const newCart = document.createElement("div");
   alert(`${cart.name} has been added to the cart!`);
   totalPrice = totalPrice + cart.price;
+
   newCart.innerHTML = `
    <div>
               <div
@@ -95,9 +108,9 @@ displayToCarts = (cart) => {
 const removeCart = (event) => {
   const targetedDel = event.target.parentElement.parentElement;
   targetedDel.remove();
-  // let removeCPrice = document.getElementById("removeCartPrice");
-  //  const  document.getElementById("tPrice");
-  // let TPrice.innerText=TPrice-removeCPrice
+  const removePrice = parseFloat(targetedDel.querySelector("span").innerText);
+  totalPrice = totalPrice - removePrice;
+  document.getElementById("tPrice").innerText = totalPrice;
 };
 
 const loadPlantDetails = async (id) => {
@@ -139,6 +152,8 @@ const removeActive = () => {
 };
 
 const loadAllPlants = (id) => {
+  manageSpinner(true);
+
   const url = `https://openapi.programming-hero.com/api/category/${id}`;
   fetch(url)
     .then((res) => res.json())
@@ -193,6 +208,7 @@ const displayCatCard = (cateCards) => {
     `;
     cardContainer.append(card);
   });
+  manageSpinner(false);
 };
 
 const displayCategory = (categories) => {
