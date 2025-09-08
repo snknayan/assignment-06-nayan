@@ -1,3 +1,5 @@
+let totalPrice = 0;
+
 loadCategories = () => {};
 fetch("https://openapi.programming-hero.com/api/categories")
   .then((res) => res.json())
@@ -40,7 +42,7 @@ const displayFrontCards = (fCateCards) => {
                 </p>
               </div>
               <div class="p-2">
-                <button
+                <button onclick="addToCarts(${fCateCard.id})"
                   class="btn my-2 w-full text-md font-semibold h-9 border-none rounded-full bg-green-700 text-white"
                 >
                   Add to Cart
@@ -68,6 +70,8 @@ const addToCarts = async (id) => {
 displayToCarts = (cart) => {
   const cartBoxContainer = document.getElementById("cartBox-container");
   const newCart = document.createElement("div");
+  alert(`${cart.name} has been added to the cart!`);
+  totalPrice = totalPrice + cart.price;
   newCart.innerHTML = `
    <div>
               <div
@@ -78,13 +82,22 @@ displayToCarts = (cart) => {
                   <p class="text-[12px] text-gray-600">$ <span>${cart.price}</span></p>
                 </div>
 
-                <div><i class="fa-solid fa-xmark text-red-700"></i></div>
+                <div><i id="removeCartPrice" onclick="removeCart(event)" class="fa-solid fa-xmark text-red-700"></i></div>
               </div>
               
             </div>
    
    `;
   cartBoxContainer.append(newCart);
+  document.getElementById("tPrice").innerText = totalPrice;
+};
+
+const removeCart = (event) => {
+  const targetedDel = event.target.parentElement.parentElement;
+  targetedDel.remove();
+  // let removeCPrice = document.getElementById("removeCartPrice");
+  //  const  document.getElementById("tPrice");
+  // let TPrice.innerText=TPrice-removeCPrice
 };
 
 const loadPlantDetails = async (id) => {
