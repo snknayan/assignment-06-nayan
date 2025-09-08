@@ -58,6 +58,35 @@ const displayFrontCards = (fCateCards) => {
 
 loadFrontCards();
 
+const addToCarts = async (id) => {
+  const url = `https://openapi.programming-hero.com/api/plant/${id}`;
+  const res = await fetch(url);
+  const carts = await res.json();
+  displayToCarts(carts.plants);
+};
+
+displayToCarts = (cart) => {
+  const cartBoxContainer = document.getElementById("cartBox-container");
+  const newCart = document.createElement("div");
+  newCart.innerHTML = `
+   <div>
+              <div
+                class="flex justify-between items-center w-[98%] mx-auto bg-[#F0FDF4] rounded-md mt-3 p-1"
+              >
+                <div>
+                  <h2 class="text-sm font-bold pb-1">${cart.name}</h2>
+                  <p class="text-[12px] text-gray-600">$ <span>${cart.price}</span></p>
+                </div>
+
+                <div><i class="fa-solid fa-xmark text-red-700"></i></div>
+              </div>
+              
+            </div>
+   
+   `;
+  cartBoxContainer.append(newCart);
+};
+
 const loadPlantDetails = async (id) => {
   const url = `https://openapi.programming-hero.com/api/plant/${id}`;
   const res = await fetch(url);
@@ -139,7 +168,7 @@ const displayCatCard = (cateCards) => {
                 </p>
               </div>
               <div class="p-2">
-                <button
+                <button onclick="addToCarts(${cateCard.id})"
                   class="btn my-2 w-full text-md font-semibold h-9 border-none rounded-full bg-green-700 text-white"
                 >
                   Add to Cart
@@ -165,7 +194,7 @@ const displayCategory = (categories) => {
     
              
           <div class="">
-            <button id="category-btn-${category.id}" onclick="loadAllPlants(${category.id})" class=" p-1 my-2 ml-1 text-sm font-semibold w-[95%] text-left mx-auto rounded-md shadow-md ctgRBtn ">
+            <button id="category-btn-${category.id}" onclick="loadAllPlants(${category.id})" class=" p-1 my-2 ml-1 text-sm font-semibold w-[95%] text-left mx-auto rounded-md h-9 shadow-md hover:bg-[#15803d] hover:text-white ctgRBtn ">
               ${category.category_name}
             </button>
           </div>
