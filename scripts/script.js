@@ -24,7 +24,7 @@ const displayFrontCards = (fCateCards) => {
                 src="${fCateCard.image}"
                 alt=""
               />
-              <h2 class="text-xl font-semibold p-2">${fCateCard.name}</h2>
+              <h2 onclick="loadPlantDetails(${fCateCard.id})" class=" text-xl font-semibold p-2">${fCateCard.name}</h2>
               <p class="text-[10px] text-gray-600 px-2 h-14">
                 ${fCateCard.description}
               </p>
@@ -57,6 +57,39 @@ const displayFrontCards = (fCateCards) => {
 };
 
 loadFrontCards();
+
+const loadPlantDetails = async (id) => {
+  const url = `https://openapi.programming-hero.com/api/plant/${id}`;
+  const res = await fetch(url);
+  const details = await res.json();
+  displayPlantDetails(details.plants);
+};
+const displayPlantDetails = (plant) => {
+  const detailsBox = document.getElementById("details-container");
+  detailsBox.innerHTML = `
+  <div id="modal-card">
+            <h2 class="text-xl font-semibold p-2 ml-6">${plant.name}</h2>
+            <img
+              class="w-[90%] mx-auto h-[220px] p-2 rounded-2xl"
+              src="${plant.image}"
+              alt=""
+            />
+            <p class="text-[12px] ml-7 my-3">
+              <span class="font-bold">Category:</span> ${plant.category}
+            </p>
+
+            <p class="text-[12px] ml-7">
+              <span class="font-bold">price: </span
+              ><i class="fa-solid fa-dollar-sign"></i>${plant.price}
+            </p>
+
+            <p class="text-[12px] h-14 ml-7 my-3">
+              <span class="font-bold text-[12px]">Descriptions:</span> ${plant.description}
+            </p>
+          </div>
+  `;
+  document.getElementById("plant_modal").showModal();
+};
 
 const removeActive = () => {
   const rButtons = document.querySelectorAll(".ctgRBtn");
@@ -92,8 +125,8 @@ const displayCatCard = (cateCards) => {
                 src="${cateCard.image}"
                 alt=""
               />
-              <h2 class="text-xl font-semibold p-2">${cateCard.name}</h2>
-              <p class="text-[10px] text-gray-600 px-2 h-14">${cateCard.description}</p>
+              <h2 onclick="loadPlantDetails(${cateCard.id})" class="text-xl font-semibold p-2">${cateCard.name}</h2>
+              <p class="text-[10px] text-gray-600 px-2 h-18">${cateCard.description}</p>
               <div class="card-inner flex justify-between px-2">
                 <button
                   class="w-28 h-7 pb-1 border-none rounded-full bg-[#DCFCE7] text-green-800 text-sm font-semibold"
