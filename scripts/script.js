@@ -1,13 +1,16 @@
 let totalPrice = 0;
 
-//Soinner
+//Spinner
 const manageSpinner = (status) => {
   if (status === true) {
     document.getElementById("spinner").classList.remove("hidden");
+    document.getElementById("spinner").classList.add("flex");
+
     document.getElementById("card-section").classList.add("hidden");
   } else {
     document.getElementById("card-section").classList.remove("hidden");
     document.getElementById("spinner").classList.add("hidden");
+    document.getElementById("spinner").classList.remove("flex");
   }
 };
 
