@@ -85,7 +85,7 @@
         </div>
         <div class="navbar-end pr-15">
           <a
-            class="btn font-bold w-28 h-9 border-none rounded-full bg-yellow-400 text-green-800"
+            class="btn font-bold w-28 h-9 border-none rounded-full bg-yellow-400 shadow-none hover:bg-white text-green-800"
             >Plant a Tree</a
           >
         </div>
@@ -108,7 +108,7 @@
             for future generations.
           </p>
           <button
-            class="btn ml-32 font-bold w-30 h-9 p-2 border-none rounded-full bg-yellow-400 text-green-800"
+            class="btn ml-32 font-bold w-30 h-9 p-2 border-none rounded-full bg-yellow-400 text-green-800 shadow-none hover:bg-white"
           >
             Get Involved
           </button>
@@ -121,15 +121,19 @@
 
     <!-- Spinner Section -->
     <section id="spinner" class="flex justify-center items-center py-8 hidden">
-      <span class="loading loading-bars loading-xl"></span>
+      <span class="loading loading-dots loading-xl"></span>
     </section>
 
     <!-- Card Section -->
-    <section id="card-section" class="bg-[#F0FDF4] h-[890px]">
-      <h1 class="text-center pt-10 text-xl font-bold">Choose your Trees</h1>
-      <div class="lmr-container mt-6 w-11/12 mx-auto grid grid-cols-12 gap-3">
-        <div class="h-[800px] col-span-2">
-          <h2 class="text-xl font-bold mb-5">Categories</h2>
+    <section id="card-section" class="bg-[#F0FDF4] min-h-[890px]">
+      <h1 class="text-center pt-10 text-xl font-bold ml-24 md:ml-0">
+        Choose your Trees
+      </h1>
+      <div
+        class="lmr-container mt-6 w-11/12 mx-auto grid grid-cols-1 md:grid-cols-12 gap-3"
+      >
+        <div class="h-[650px] md:min-h-[800px] ml-22 md:ml-0 md:col-span-2">
+          <h2 class="text-xl font-bold mb-5 mt-10 md:mt-0">Categories</h2>
           <div id="category-container">
             <!-- 
           <div>
@@ -141,7 +145,7 @@
         </div>
         <div
           id="card-container"
-          class="h-[800px] bg-white rounded-md grid grid-cols-3 gap-2 col-span-8"
+          class="min-h-[800px] bg-white rounded-md grid grid-cols-1 md:grid-cols-3 gap-2 col-span-8"
         >
           <!-- <div id="front-card-1" class="card">
             <div class="card shadow-xl rounded-xl w-[250px] min-h-[190px]">
@@ -339,7 +343,7 @@
           </div> -->
         </div>
         <div
-          class="h-[800px] bg-white rounded-md col-span-2 add-cart-container font-bold p-2"
+          class="h-[800px] bg-white ml-20 md:ml-0 rounded-md col-span-2 add-cart-container font-bold p-2"
         >
           Your Cart
 
@@ -372,21 +376,27 @@
     </section>
 
     <!-- Campaign Section -->
-    <section class="max-w-[1920px] bg-[#F0FDF4] h-[600px]">
+    <section class="max-w-[1920px] bg-[#F0FDF4] min-h-[600px]">
       <h1 class="text-center pt-15 text-2xl font-bold">About the Campaign</h1>
       <div class="w-[770px] mx-auto pt-10">
-        <div class="campaign-container flex items-center gap-5">
+        <div
+          class="campaign-container flex flex-col md:flex-row items-center gap-5"
+        >
           <div class="w-full">
             <img src="./assets/about.png" alt="" />
           </div>
           <div class="w-full">
-            <p class="w-[400px] text-sm text-[#1F2937]">
+            <p
+              class="w-[400px] text-sm ml-14 mt-4 md:ml-1 md:mt-1 text-[#1F2937]"
+            >
               Green Earth is a global tree plantation initiative dedicated to
               fighting climate change. Since our start, we’ve planted over
               500,000 trees worldwide. By joining our campaign, you help restore
               forests, create habitats for wildlife, and combat global warming.
             </p>
-            <ul class="text-sm text-[#1F2937] pt-4 pl-4 list-disc">
+            <ul
+              class="text-sm text-[#1F2937] pt-4 md:pl-4 pl-18 md:pb-1 pb-6 list-disc"
+            >
               <li>Restoration of natural habitats</li>
               <li>Improvement of air quality</li>
               <li>Support for local communities</li>
@@ -397,22 +407,28 @@
     </section>
 
     <!-- Impact Section -->
-    <section class="max-w-[1920px] h-[250px] bg-[#CFF0DC]">
-      <h2 class="pt-12 text-2xl font-semibold text-center">Our Impact</h2>
+    <section class="max-w-[1920px] min-h-[250px] bg-[#CFF0DC]">
+      <h2 class="pt-12 pb-3 text-2xl font-semibold text-center">Our Impact</h2>
       <div
-        class="impact-container pt-4 w-[1000px] mx-auto flex items-center justify-between"
+        class="impact-container pt-4 max-w-[1000px] mx-auto flex flex-col md:flex-row items-center justify-between"
       >
-        <div class="bg-white text-center w-[250px] p-3 rounded-md">
+        <div
+          class="bg-white text-center w-[250px] p-3 rounded-md hover:bg-green-300"
+        >
           <h2 class="text-xl text-green-800 font-bold">500K+</h2>
           <p class="text-sm text-[#1F2937]">Trees Planted</p>
         </div>
 
-        <div class="bg-white text-center w-[250px] p-3 rounded-md">
+        <div
+          class="bg-white text-center w-[250px] p-3 rounded-md hover:bg-green-300 my-6 md:my-0"
+        >
           <h2 class="text-xl text-green-800 font-bold">120K+</h2>
           <p class="text-sm text-[#1F2937]">Communities Involved</p>
         </div>
 
-        <div class="bg-white text-center w-[250px] p-3 rounded-md">
+        <div
+          class="bg-white text-center w-[250px] p-3 rounded-md hover:bg-green-300 mb-6 md:mb-0"
+        >
           <h2 class="text-xl text-green-800 font-bold">30+</h2>
           <p class="text-sm text-[#1F2937]">Countries Reached</p>
         </div>
@@ -420,16 +436,16 @@
     </section>
 
     <!-- Donate Section -->
-    <section class="max-w-[1920px] h-[400px] bg-[#166534]">
+    <section class="max-w-[1920px] min-h-[400px] bg-[#166534]">
       <h2 class="text-center text-xl font-bold pt-14 text-white">
         Plant a Tree Today
       </h2>
 
       <div class="h-[300px] flex justify-center items-center pt-3">
         <fieldset
-          class="fieldset rounded-box w-[40%] bg-[#15803D] border p-5 space-y-1"
+          class="fieldset rounded-box w-[80%] md:w-[40%] bg-[#15803D] border p-5 space-y-1"
         >
-          <input type="text" class="input w-full" placeholder="Name" />
+          <input type="text" class="input w-full" placeholder="Your Name" />
 
           <input
             type="email"
@@ -440,13 +456,14 @@
           <select
             class="rounded-box bg-white text-gray-500 w-full h-10 border p-1"
           >
-            <option value="volvo">Name Of Trees</option>
-            <option value="saab">Apple Tree</option>
-            <option value="mercedes">Coconut Tree</option>
+            <option value="volvo">Number Of Trees</option>
+            <option value="saab">1 Tree - $5</option>
+            <option value="mercedes">5 Tree - $25</option>
+            <option value="mercedes">10 Tree - $50</option>
           </select>
 
           <button
-            class="btn w-full font-bold w-30 h-9 p-2 border-none rounded-full bg-yellow-400 text-green-800"
+            class="btn w-full font-bold w-30 h-9 p-2 border-none rounded-full bg-yellow-400 text-green-800 shadow-none hover:bg-white"
           >
             Donate Now
           </button>

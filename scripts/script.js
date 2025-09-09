@@ -31,7 +31,7 @@ const displayFrontCards = (fCateCards) => {
     if (fCateCard.id <= 6) {
       const fCard = document.createElement("div");
       fCard.innerHTML = `
-        <div id="front-card-1" class="card">
+        <div id="front-card-1" class="card ml-24 md:ml-0">
             <div class="card shadow-xl rounded-xl w-[250px] min-h-[190px]">
               <img
                 class="w-[250px] h-[190px] p-2 rounded-2xl"
@@ -173,9 +173,9 @@ const displayCatCard = (cateCards) => {
     const card = document.createElement("div");
     card.innerHTML = `
     
-    <div class="card">
+    <div class="card ml-24 md:ml-0">
             <div
-              class=" shadow-xl rounded-xl w-[250px] h-[190 gap-3"
+              class=" shadow-xl rounded-xl w-[250px] min-h-[190px] gap-3"
             >
               <img
                 class="w-[250px] h-[190px] p-2 rounded-2xl"
